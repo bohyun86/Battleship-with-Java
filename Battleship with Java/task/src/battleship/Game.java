@@ -4,11 +4,17 @@ import java.util.Scanner;
 
 public class Game {
 
-    Player player1 = new Player("Player 1");
-    Player player2 = new Player("Player 2");
-    Player currentPlayer = player1;
-    Player nextPlayer = player2;
-    Player temp;
+    private final Player player1;
+    private final Player player2;
+    private Player currentPlayer;
+    private Player nextPlayer;
+
+    public Game(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.currentPlayer = player1;
+        this.nextPlayer = player2;
+    }
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
@@ -35,7 +41,7 @@ public class Game {
                 System.out.println("You sank the last ship. You won. Congratulations!");
                 break;
             }
-            temp = currentPlayer;
+            Player temp = currentPlayer;
             currentPlayer = nextPlayer;
             nextPlayer = temp;
         }
